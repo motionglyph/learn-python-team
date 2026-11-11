@@ -8,6 +8,8 @@ parenthesized list of formal parameters. The statements that form the body of th
 the next line, and must be indented.
 """
 
+import pytest
+
 
 def fibonacci_function_example(number_limit):
     """Generate a Fibonacci series up to number_limit.
@@ -136,3 +138,21 @@ def test_function_multiple_return_values():
 
     assert smallest == 1
     assert largest == 9
+
+
+def test_function_input_validation():
+    """Validating function input"""
+
+    # A function can check its input before using it. If the input is not valid,
+    # it can raise an exception to tell the caller what went wrong.
+
+    def calculate_square_root(number):
+        if number < 0:
+            raise ValueError('Number must not be negative')
+        return number ** 0.5
+
+    assert calculate_square_root(16) == 4
+
+    # Passing a negative number raises a ValueError.
+    with pytest.raises(ValueError):
+        calculate_square_root(-4)
