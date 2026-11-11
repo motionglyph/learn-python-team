@@ -121,3 +121,18 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+
+def test_function_multiple_return_values():
+    """Returning multiple values"""
+
+    # A function can return more than one value by separating them with commas.
+    # Python packs them into a tuple, which can be unpacked into separate variables.
+
+    def get_min_and_max(numbers):
+        return min(numbers), max(numbers)
+
+    smallest, largest = get_min_and_max([4, 9, 1, 7])
+
+    assert smallest == 1
+    assert largest == 9
